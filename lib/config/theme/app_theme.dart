@@ -25,5 +25,14 @@ class AppTheme {
   ThemeData getTheme() => ThemeData(
         useMaterial3: true,
         colorSchemeSeed: colorList[selectedColor],
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
+          titleTextStyle: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       );
 }
