@@ -49,7 +49,7 @@ class _CustomListTile extends StatelessWidget {
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
       onTap: () {
-        //TODO:NAVEGAR A OTRAS PANTALLAS
+        Navigator.pushNamed(context, menuItem.link);
       },
     );
   }
