@@ -45,7 +45,22 @@ class _CardsView extends StatelessWidget {
               label: card['label'],
               elevation: card['elevation'],
             ),
-          )
+          ),
+          ...cards.map(
+            (card) => _CardType3(
+              label: card['label'],
+              elevation: card['elevation'],
+            ),
+          ),
+          ...cards.map(
+            (card) => _CardType4(
+              label: card['label'],
+              elevation: card['elevation'],
+            ),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
         ],
       ),
     );
@@ -130,6 +145,88 @@ class _CardType2 extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _CardType3 extends StatelessWidget {
+  const _CardType3({
+    required this.label,
+    required this.elevation,
+  });
+
+  final String label;
+  final double elevation;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Card(
+      color: colors.surfaceVariant,
+      elevation: elevation,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 10,
+        ),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.more_vert_outlined),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text('$label- Filled'),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CardType4 extends StatelessWidget {
+  const _CardType4({
+    required this.label,
+    required this.elevation,
+  });
+
+  final String label;
+  final double elevation;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      elevation: elevation,
+      child: Stack(
+        children: [
+          Image.network(
+            'https://picsum.photos/id/${elevation.toInt()}/600/350',
+            height: 350,
+            fit: BoxFit.cover,
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                ),
+              ),
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.more_vert_outlined),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
